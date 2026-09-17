@@ -46,61 +46,61 @@ void DynamicArray::resize()
 
 int main()
 {
-	DynamicArray dynamicArray(2);
-	dynamicArray.pushback(20);
-	dynamicArray.pushback(12);
-	dynamicArray.pushback(32);
-	dynamicArray.pushback(124);
-	dynamicArray.pushback(12);
-	dynamicArray.pushback(142);
+	int capacity;
+	bool isRunning = true;
+	
+	
+	
+	std::cout << "Enter array capacity: ";
+	std::cin >> capacity;
 
-	std::cout << "After adding data: \n\n";
+	DynamicArray dynamicArray(capacity);
 
-	int* array = dynamicArray.getArray();
-	std::cout << "Array: " << std::endl;;
-	for (int i = 0; i < dynamicArray.getSize(); i++)
+	std::string input;
+	int iInput;
+
+	while (isRunning)
 	{
-		std::cout << i << ": " << array[i] << std::endl;
+		std::cout << "pushback/popback/print/q: ";
+		std::cin >> input;
+
+		if (input == "pushback")
+		{
+			std::cout << "number: ";
+			std::cin >> iInput;
+
+			dynamicArray.pushback(iInput);
+		}
+		else if (input == "popback")
+		{
+			dynamicArray.popback();
+		}
+		else if (input == "print")
+		{
+			int* arr = dynamicArray.getArray();
+
+			std::cout << "\nArray:\n";
+
+			for (int i = 0; i < dynamicArray.getSize(); i++)
+			{
+				std::cout << i << ": " << arr[i] << '\n';
+			}
+
+			std::cout << '\n';
+		}
+		else if (input == "q")
+		{
+			isRunning = false;
+		}
+		else
+		{
+			std::cout << "Invalid input.\n";
+		}
 	}
-		
-	std::cout << "Size: " << dynamicArray.getSize() << std::endl;
-	std::cout << "Capacity: " << dynamicArray.getCapacity() << std::endl;
+	
 
+	
 
-	dynamicArray.popback();
-	dynamicArray.popback();
-
-
-	std::cout << "===================================\n\n\n";
-	std::cout << "After removing data \n\n";
-	std::cout << "Array: " << std::endl;;
-	for (int i = 0; i < dynamicArray.getSize(); i++)
-	{
-		std::cout << i << ": " << array[i] << std::endl;
-	}
-
-
-	std::cout << "Size: " << dynamicArray.getSize() << std::endl;
-	std::cout << "Capacity: " << dynamicArray.getCapacity() << std::endl;
-
-
-
-
-	std::cout << "===================================\n\n\n";
-	dynamicArray.pushback(2230);
-	dynamicArray.pushback(123);
-	dynamicArray.pushback(325);
-
-	std::cout << "After adding more data: \n\n";
-
-	std::cout << "Array: " << std::endl;;
-	for (int i = 0; i < dynamicArray.getSize(); i++)
-	{
-		std::cout << i << ": " << array[i] << std::endl;
-	}
-
-	std::cout << "Size: " << dynamicArray.getSize() << std::endl;
-	std::cout << "Capacity: " << dynamicArray.getCapacity() << std::endl;
 
 	return 0;
 }
