@@ -12,7 +12,7 @@ endif()
 project ("runtime-allocator")
 
 # Add source to this project's executable.
-add_executable (runtime-allocator "runtime-allocator.cpp" "runtime-allocator.h")
+add_executable (runtime-allocator "runtime-allocator.cpp"   "DynamicArray.h")
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET runtime-allocator PROPERTY CXX_STANDARD 20)
